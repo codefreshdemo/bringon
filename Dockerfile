@@ -7,5 +7,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o gobot
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
+EXPOSE 8091
 COPY --from=builder /go/src/github.com/antweiss/gobot/gobot .
 CMD ["./gobot"]
