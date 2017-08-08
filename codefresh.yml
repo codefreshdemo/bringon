@@ -13,12 +13,6 @@ steps:
     candidate: '${{BuildingDockerImage}}'
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     registry: dockerhub
-  PushWithNumber:
-    title: Pushing to Docker Registry with Build Number
-    type: push
-    candidate: '${{BuildingDockerImage}}'
-    tag: '${{BUILD_NUMBER}}'
-    registry: dockerhub
   RunningDeployScript:
     title: Running Deploy Script
     type: deploy
@@ -31,5 +25,5 @@ steps:
         only:
           - master
     candidate:
-      image: '${{BuildingDockerImage}}':'${{BUILD_NUMBER}}'
+      image: '${{BuildingDockerImage}}'
       registry: dockerhub
