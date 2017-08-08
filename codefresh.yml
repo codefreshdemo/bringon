@@ -7,12 +7,16 @@ steps:
     working_directory: ./
     dockerfile: Dockerfile
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
-    tag: '${{BUILD_NUMBER}}'
   PushingToDockerRegistry:
     title: Pushing to Docker Registry
     type: push
     candidate: '${{BuildingDockerImage}}'
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    registry: dockerhub
+  PushWithNumber:
+    title: Pushing to Docker Registry with Build Number
+    type: push
+    candidate: '${{BuildingDockerImage}}'
     tag: '${{BUILD_NUMBER}}'
     registry: dockerhub
   RunningDeployScript:
@@ -29,4 +33,3 @@ steps:
     candidate:
       image: '${{BuildingDockerImage}}':'${{BUILD_NUMBER}}'
       registry: dockerhub
-
