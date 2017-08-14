@@ -1,0 +1,8 @@
+
+[[constraint]]
+  name = "github.com/gorilla/mux"
+  version = "1.4.0"
+
+[[constraint]]
+  branch = "v2"
+  name = "gopkg.in/mgo.v2"
