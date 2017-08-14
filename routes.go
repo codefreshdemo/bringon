@@ -30,4 +30,10 @@ var routes = Routes{
 		"/builds/{buildId}",
 		BuildShow,
 	},
+	Route{
+		"BuildAdd",
+		"POST",
+		"/builds/{buildId}",
+		BuildAdd,
+	},
 }
