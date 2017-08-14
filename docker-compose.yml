@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  bringon:
+    build: .
+    ports:
+      - 8091
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
