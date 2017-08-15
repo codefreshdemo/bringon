@@ -3,7 +3,7 @@ steps:
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: antweiss/gobot
+    image_name: otomato/bringon
     working_directory: ./
     dockerfile: Dockerfile
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
@@ -19,7 +19,7 @@ steps:
     kind: kubernetes
     cluster: cftest@otomato-auth
     namespace: default
-    service: gobot
+    service: bringon
     when:
       branch:
         only:
@@ -27,3 +27,4 @@ steps:
     candidate:
       image: '${{BuildingDockerImage}}'
       registry: dockerhub
+  
