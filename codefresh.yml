@@ -13,6 +13,12 @@ steps:
     candidate: '${{BuildingDockerImage}}'
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
     registry: dockerhub
+  PushingToDockerRegistryWithCustomTag:
+    title: Pushing to Docker Registry
+    type: push
+    candidate: '${{BuildingDockerImage}}'
+    tag: '${{JBN}}'
+    registry: dockerhub
   RunningDeployScript:
     title: Running Deploy Script
     type: deploy
@@ -27,4 +33,3 @@ steps:
     candidate:
       image: '${{BuildingDockerImage}}'
       registry: dockerhub
-  
