@@ -6,3 +6,7 @@
 [[constraint]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"
+
+[[constraint]]
+  version = "0.1"
+  name = "github.com/otomato-gh/buildinfo"

@@ -14,6 +14,12 @@
   version = "v1.4.0"
 
 [[projects]]
+  name = "github.com/otomato-gh/buildinfo"
+  packages = ["."]
+  revision = "42e6899381d03eb819ef4e7eb129413dfc50b049"
+  version = "v0.1"
+
+[[projects]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"
   packages = [".","bson","internal/json","internal/sasl","internal/scram"]
@@ -22,6 +28,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6012811ddf29ef2493c8ceb3e45096c3cceac0f6b05169af6d8abb5fa594afc6"
+  inputs-digest = "9b472ca2b6a8c7a6057324992acc196ea70fcd330fc1d2227a2251909e7b73d1"
   solver-name = "gps-cdcl"
   solver-version = 1
