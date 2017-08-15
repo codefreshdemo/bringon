@@ -12,7 +12,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome!")
+	fmt.Fprintln(w, "Bring On the Builds!")
 }
 
 func BuildIndex(w http.ResponseWriter, r *http.Request) {
