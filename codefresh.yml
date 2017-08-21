@@ -11,7 +11,7 @@ steps:
     title: Pushing to Docker Registry
     type: push
     candidate: '${{BuildingDockerImage}}'
-    tag: '${{BUILD_NUMBER}}'
+    tag: 'buildinfo_v${{BUILD_NUMBER}}'
     registry: dockerhub
   RunningDeployScript:
     title: Running Deploy Script
