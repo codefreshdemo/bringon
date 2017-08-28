@@ -8,6 +8,8 @@ import (
 	"log"
 	"net/http"
 
+	"gopkg.in/mgo.v2/bson"
+
 	"github.com/gorilla/mux"
 )
 
@@ -29,7 +31,22 @@ func BuildIndex(w http.ResponseWriter, r *http.Request) {
 func BuildShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	buildId := vars["buildId"]
-	fmt.Fprintln(w, "Build show:", buildId)
+	//	fmt.Fprintln(w, "Build show:", buildId)
+	session := dbinit()
+	//log.Printf("got collection %v", bCol)
+	bCol := session.DB("bringon").C("builds")
+	log.Printf("got collection")
+
+	build := Build{}
+	err := bCol.Find(bson.M{"name": string('#') + buildId}).One(&build)
+	if err != nil {
+		log.Printf(err.Error())
+	}
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	if err := json.NewEncoder(w).Encode(build); err != nil {
+		panic(err)
+	}
 }
 
 func BuildAdd(w http.ResponseWriter, r *http.Request) {
@@ -51,7 +68,7 @@ func BuildAdd(w http.ResponseWriter, r *http.Request) {
 	log.Printf("build is %v", build)
 	session := dbinit()
 	//log.Printf("got collection %v", bCol)
-	bCol := session.DB("bubblz").C("builds")
+	bCol := session.DB("bringon").C("builds")
 	log.Printf("got collection")
 
 	t := bCol.Insert(&build)

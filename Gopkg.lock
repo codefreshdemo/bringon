@@ -16,8 +16,8 @@
 [[projects]]
   name = "github.com/otomato-gh/buildinfo"
   packages = ["."]
-  revision = "42e6899381d03eb819ef4e7eb129413dfc50b049"
-  version = "v0.1"
+  revision = "5815ff23cf514325d06c30153ce9e0644c25b659"
+  version = "v0.12"
 
 [[projects]]
   branch = "v2"
@@ -28,6 +28,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9b472ca2b6a8c7a6057324992acc196ea70fcd330fc1d2227a2251909e7b73d1"
+  inputs-digest = "6d57ec0edc9105f9b99911677e2cef739d92009d0f23ee607fb219967628b796"
   solver-name = "gps-cdcl"
   solver-version = 1

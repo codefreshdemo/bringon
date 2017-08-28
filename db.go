@@ -8,7 +8,7 @@ import (
 
 func dbinit() *mgo.Session {
 	session, err := mgo.Dial("mongo")
-	log.Printf("cretaed session")
+	log.Printf("created session")
 	if err != nil {
 		panic(err)
 	}
