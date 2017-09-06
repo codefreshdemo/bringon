@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('CallCF') {
       steps {
-        codefreshRun(cfPipeline: 'gobot', cfBranch: 'master', cfVars: [['Value' : "${BUILD_NUMBER}", 'Variable' : 'BUILD_NUMBER']] )
+        codefreshRun(cfPipeline: 'bringon', cfBranch: 'master', cfVars: [['Value' : "${BUILD_NUMBER}", 'Variable' : 'BUILD_NUMBER']] )
       }
     }
   }
