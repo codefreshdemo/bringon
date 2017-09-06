@@ -17,7 +17,7 @@ steps:
     title: Running Deploy Script
     type: deploy
     kind: kubernetes
-    cluster: cftest@otomato-auth
+    cluster: cftest@kube-tut
     namespace: default
     service: bringon
     when:
