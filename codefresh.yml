@@ -10,4 +10,4 @@ steps:
     image: otomato/jira-cli:alpine
     commands:
       - echo jira-cli update ${JIRAID} --comment "New docker image ${{CF_BUILD_ID}}" --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
-      - jira-cli update ${JIRAID} --comment "New docker image ${{CF_BUILD_ID}}" --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
+      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{CF_BUILD_ID}}' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
