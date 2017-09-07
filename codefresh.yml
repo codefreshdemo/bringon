@@ -13,18 +13,15 @@ steps:
     candidate: '${{BuildingDockerImage}}'
     tag: 'buildinfo_v${{BUILD_NUMBER}}'
     registry: dockerhub
-  RunningDeployScript:
-    title: Running Deploy Script
-    type: deploy
-    kind: kubernetes
-    cluster: cftest@kube-tut
-    namespace: default
-    service: bringon
-    when:
-      branch:
-        only:
-          - master
-    candidate:
-      image: '${{BuildingDockerImage}}'
-      registry: dockerhub
-  
+  Get Jira ID:
+    title: Get Jira ID
+    type: freestyle
+    image: alpine:latest
+    commands:
+      - echo JIRAID=$(echo ${{CF_COMMIT_MESSAGE}} |perl -ple 's/([A-Z]+-\d+).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
+  Updating Jira:
+    title: Update Jira Issue 
+    type: freestyle
+    image: otomato/jira-cli:alpine
+    commands:
+      - jira-cli update ${JIRAID} --comment "New docker image ${{CF_BUILD_ID}}" --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
