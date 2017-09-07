@@ -1,21 +1,8 @@
 version: '1.0'
 steps:
-  BuildingDockerImage:
-    title: Building Docker Image
-    type: build
-    image_name: otomato/bringon
-    working_directory: ./
-    dockerfile: Dockerfile
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
-  PushingToDockerRegistry:
-    title: Pushing to Docker Registry
-    type: push
-    candidate: '${{BuildingDockerImage}}'
-    tag: '${{CF_BUILD_ID}}'
-    registry: dockerhub
   GetJiraID:
     title: Get Jira ID
-    image: ubunty:latest
+    image: ubuntu:latest
     commands:
       - echo JIRAID=$(echo ${{CF_COMMIT_MESSAGE}} |perl -ple 's/([A-Z]+-\d+).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
   UpdatingJira:
