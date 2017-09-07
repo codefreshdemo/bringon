@@ -11,7 +11,7 @@ steps:
     title: Pushing to Docker Registry
     type: push
     candidate: '${{BuildingDockerImage}}'
-    tag: 'buildinfo_v${{BUILD_NUMBER}}'
+    tag: '${{CF_BUILD_ID}}'
     registry: dockerhub
   GetJiraID:
     title: Get Jira ID
