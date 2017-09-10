@@ -2,9 +2,9 @@ version: '1.0'
 steps:
   GetJiraID:
     title: Get Jira ID
-    image: ubuntu:latest
+    image: apline:latest
     commands:
-      - echo JIRAID=$(echo "${{CF_COMMIT_MESSAGE}}" |perl -ple 's/([A-Z]+-\d+).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
+      - echo JIRAID=$(echo "${{CF_COMMIT_MESSAGE}}" |sed -e 's/\([A-Z]*-[0-9]*\).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
   BuildingDockerImage:
     title: Building Docker Image
     type: build
