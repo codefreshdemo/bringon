@@ -16,7 +16,7 @@ steps:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
     commands:
-      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{BuildingDockerImage.imageId}}. Build is here ${{CF_BUILD_URL}}' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
+      - yes n | jira-cli update ${JIRAID} --comment 'New docker image otomato/bringon:${{CF_BRANCH_TAG_NORMALIZED}}. Build log is here ${{CF_BUILD_URL}}' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
     when:
       condition:
           all:
