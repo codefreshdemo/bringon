@@ -20,4 +20,4 @@ steps:
     when:
       condition:
           all:
-              JiraIdFound: 'match(${JIRAID}, "[A-Z]+-[0-9]+", true)'
+              JiraIdFound: 'match("${JIRAID}", "[A-Z]+-[0-9]+", true)'
