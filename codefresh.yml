@@ -1,5 +1,12 @@
 version: '1.0'
 steps:
+  BuildingDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: otomato/bringon
+    working_directory: ./
+    dockerfile: Dockerfile
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
   GetJiraID:
     title: Get Jira ID
     image: ubuntu:latest
@@ -10,4 +17,4 @@ steps:
     image: otomato/jira-cli:alpine
     commands:
       - echo jira-cli update ${JIRAID} --comment "New docker image ${{CF_BUILD_ID}}" --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
-      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{CF_BUILD_ID}}' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
+      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{CF_BUILD_ID}} ' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
