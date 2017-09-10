@@ -5,13 +5,13 @@ steps:
     image: alpine:latest
     commands:
       - echo JIRAID=$(echo "${{CF_COMMIT_MESSAGE}}" |sed -e 's/\([A-Z]*-[0-9]*\).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
-  BuildingDockerImage:
-    title: Building Docker Image
-    type: build
-    image_name: otomato/bringon
-    working_directory: ./
-    dockerfile: Dockerfile
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+  # BuildingDockerImage:
+  #   title: Building Docker Image
+  #   type: build
+  #   image_name: otomato/bringon
+  #   working_directory: ./
+  #   dockerfile: Dockerfile
+  #   tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
