@@ -5,18 +5,18 @@ steps:
     image: alpine:latest
     commands:
       - echo JIRAID=$(echo "${{CF_COMMIT_MESSAGE}}" |sed -e 's/\([A-Z]*-[0-9]*\).*/\1/') > ${{CF_VOLUME_PATH}}/env_vars_to_export
-  # BuildingDockerImage:
-  #   title: Building Docker Image
-  #   type: build
-  #   image_name: otomato/bringon
-  #   working_directory: ./
-  #   dockerfile: Dockerfile
-  #   tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+  BuildingDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: otomato/bringon
+    working_directory: ./
+    dockerfile: Dockerfile
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
     commands:
-      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{CF_BUILD_ID}} ' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
+      - yes n | jira-cli update ${JIRAID} --comment 'New docker image ${{CF_BUILD_ID}}. Build is here ${{CF_BUILD_URL}}' --jira-url ${JIRA_URL} -u ${JIRA_USR} -p ${JIRA_PWD}
     when:
       condition:
           all:
