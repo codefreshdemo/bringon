@@ -3,6 +3,8 @@ package pacttest
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -115,8 +117,23 @@ func startInstrumentedBringon() {
 }
 func Setup(w http.ResponseWriter, r *http.Request) {
 	log.Println("In Setup")
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		panic(err)
+	}
+	if err := r.Body.Close(); err != nil {
+		panic(err)
+	}
+	var state types.ProviderState
+	if err := json.Unmarshal(body, &state); err != nil {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(422) // unprocessable entity
+		if err := json.NewEncoder(w).Encode(err); err != nil {
+			panic(err)
+		}
+	}
+	log.Printf("state is %v", state)
 	session := bringon.Dbinit()
-	//log.Printf("got collection %v", bCol)
 	bCol := session.DB("bringon").C("builds")
 	t := bCol.Insert(&build3455exists)
 	if err := json.NewEncoder(w).Encode(t); err != nil {
