@@ -1,4 +1,4 @@
-package main
+package bringon
 
 import (
 	"encoding/json"
@@ -32,7 +32,7 @@ func BuildShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	buildId := vars["buildId"]
 	//	fmt.Fprintln(w, "Build show:", buildId)
-	session := dbinit()
+	session := Dbinit()
 	//log.Printf("got collection %v", bCol)
 	bCol := session.DB("bringon").C("builds")
 	log.Printf("got collection")
@@ -66,7 +66,7 @@ func BuildAdd(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	log.Printf("build is %v", build)
-	session := dbinit()
+	session := Dbinit()
 	//log.Printf("got collection %v", bCol)
 	bCol := session.DB("bringon").C("builds")
 	log.Printf("got collection")

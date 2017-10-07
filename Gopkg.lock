@@ -14,10 +14,22 @@
   version = "v1.4.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/hashicorp/logutils"
+  packages = ["."]
+  revision = "0dc08b1671f34c4250ce212759ebd880f743d883"
+
+[[projects]]
   name = "github.com/otomato-gh/buildinfo"
   packages = ["."]
   revision = "5815ff23cf514325d06c30153ce9e0644c25b659"
   version = "v0.12"
+
+[[projects]]
+  name = "github.com/pact-foundation/pact-go"
+  packages = ["dsl","types"]
+  revision = "e5ab27bf2c64016e153ac8a5237aa4f34d42587a"
+  version = "v0.0.9"
 
 [[projects]]
   branch = "v2"
@@ -28,6 +40,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6d57ec0edc9105f9b99911677e2cef739d92009d0f23ee607fb219967628b796"
+  inputs-digest = "7b8871a2fa41b09af633a5e324a7c9e2c8d3532f0a8f897dcabad4b84b9ddc19"
   solver-name = "gps-cdcl"
   solver-version = 1

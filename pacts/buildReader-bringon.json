@@ -1,0 +1,45 @@
+{
+  "consumer": {
+    "name": "buildReader"
+  },
+  "provider": {
+    "name": "bringon"
+  },
+  "interactions": [
+    {
+      "description": "a request for build 3455",
+      "providerState": "build 3455 exists",
+      "request": {
+        "method": "get",
+        "path": "/builds/3455"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "info": {
+            "buildtime": 230,
+            "coverage": 30,
+            "apiversion": 0.1,
+            "swaggerlink": "http://swagger"
+          },
+          "timestamp": "2017-09-17T19:43:12+03:00",
+          "completed": true,
+          "name": "#3455"
+        },
+        "matchingRules": {
+          "$.body.timestamp": {
+            "match": "regex",
+            "regex": "\\d+-\\d+-\\d+T\\d+:\\d+:\\d+.+"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

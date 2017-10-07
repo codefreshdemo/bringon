@@ -3,7 +3,7 @@ WORKDIR /go/src/github.com/antweiss/bringon
 ADD . .
 #RUN go get -d -v github.com/gorilla/mux && go get gopkg.in/mgo.v2
 RUN go get -u github.com/golang/dep/cmd/dep && dep ensure -v
-RUN CGO_ENABLED=0 GOOS=linux go build -o bringon
+RUN CGO_ENABLED=0 GOOS=linux go build -o bringon service/main.go
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates

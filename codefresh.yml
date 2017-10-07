@@ -11,7 +11,7 @@ steps:
     image_name: otomato/bringon
     working_directory: ./
     dockerfile: Dockerfile
-    tag: '${{CF_BRANCH_TAG_NORMALIZED}}'
+    tag: '${{CF_SHORT_REVISION}}'
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
