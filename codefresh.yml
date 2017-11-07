@@ -12,6 +12,14 @@ steps:
     working_directory: ./
     dockerfile: Dockerfile
     tag: '${{CF_SHORT_REVISION}}'
+    metadata: # Declare the metadata attribute
+      set: # Specify the set operation
+        - qa: pending
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - jira: ${{JIRAID}}
+        - exit_code: 0
+        - is_main:
+          evaluate: "'${{CF_BRANCH}}' == 'master'"
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
