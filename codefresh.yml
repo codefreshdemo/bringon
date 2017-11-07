@@ -20,6 +20,10 @@ steps:
         - exit_code: 0
         - is_main:
             evaluate: "'${{CF_BRANCH}}' == 'master'"
+  PushDockerImage:
+    type: push
+    candidate: ${{BuildingDockerImage}}
+    tag: ${{CF_SHORT_REVISION}}
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
