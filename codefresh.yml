@@ -19,7 +19,7 @@ steps:
         - jira: ${{JIRAID}}
         - exit_code: 0
         - is_main:
-          evaluate: "'${{CF_BRANCH}}' == 'master'"
+            evaluate: "'${{CF_BRANCH}}' == 'master'"
   UpdatingJira:
     title: Update Jira Issue
     image: otomato/jira-cli:alpine
